@@ -8,7 +8,6 @@ module.exports = (config, webpack) => {
     test: /\.vue$/,
     loader: 'vue-loader'
   });
-  console.log(config.devServer);
   config.devServer = {
     historyApiFallback: {
       rewrites: [{
