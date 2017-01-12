@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "extends": ["vue", "airbnb"],
+  "rules": {
+    "semi": [2, "always"],
+    "comma-dangle": [2, "never"],
+    "no-plusplus": [0],
+    "no-param-reassign": [0]
+  }
+}
