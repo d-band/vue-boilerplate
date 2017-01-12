@@ -33,9 +33,7 @@ export default {
     };
   },
   beforeMount() {
-    this.$store.dispatch('loadUsers').then(() => {
-      this.loading = false;
-    });
+    this.loadUsers();
   },
   computed: {
     users() {
@@ -43,6 +41,17 @@ export default {
     }
   },
   methods: {
+    loadUsers() {
+      this.$store.dispatch('loadUsers').then(() => {
+        this.loading = false;
+      }).catch((e) => {
+        this.$notify({
+          title: e.status,
+          message: e.message,
+          duration: 3000
+        });
+      });
+    },
     startHacking() {
       this.$notify({
         title: 'It Works',

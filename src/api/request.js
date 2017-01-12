@@ -6,8 +6,9 @@ const request = {};
 
 function handle(req) {
   return req.then(res => Promise.resolve(res.data)).catch((err) => {
-    if (err.response) {
-      return Promise.reject(err.response.data);
+    const data = err.response && err.response.data;
+    if (data && data.message) {
+      return Promise.reject(data);
     }
     return Promise.reject({
       status: 500,
