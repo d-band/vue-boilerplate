@@ -83,6 +83,7 @@
     left: 0;
     right: 0;
     height: 50px;
+    padding: 0 8px;
     background: #1582dc;
     z-index: 1000;
     .img-circle {
@@ -90,9 +91,12 @@
     }
     .header-avatar {
       width: 32px;
+      height: 32px;
+      vertical-align: middle;
     }
     .heading-font {
-      vertical-align: middle;
+      color: #fff;
+      margin: 0 4px;
     }
     .navbar-brand {
       text-decoration: none;
@@ -118,20 +122,24 @@
       height: 50px;
       .el-submenu {
         &:hover{
-          border-bottom: 0;
-          background-color: transparent;
+          background-color: #1270be;
         }
       }
-      .el-menu-item, .el-submenu__title {
+      .el-submenu__title {
         height: 50px;
         padding: 9px;
         line-height: 32px;
+        border-bottom: 0;
 
         &:hover{
           border-bottom: 0;
-          background-color: transparent;
+          background-color: #1270be;
         }
       }
+    }
+    .el-menu--horizontal .el-submenu > .el-menu {
+      top: 55px;
+      height: auto;
     }
   }
   .el-menu-navbar-wrap {
