@@ -7,7 +7,7 @@
           <span class="heading-font">D-BAND</span>
         </a>
       </div>
-      <el-menu default-active="1" mode="horizontal">
+      <el-menu mode="horizontal">
         <el-submenu>
           <template slot="title">
             <img src="./assets/avatar.png" class="header-avatar img-circle" :alt="username" :title="username">
@@ -18,7 +18,7 @@
       </el-menu>
     </div>
     <el-col :span="4" class="main-sidebar">
-      <el-menu default-active="2" router class="el-menu el-menu-navbar" theme="dark" style="height: 100%">
+      <el-menu :default-active="path" router class="el-menu el-menu-navbar" theme="dark" style="height: 100%">
         <el-menu-item index="/"><i class="ti-home mr10"></i>Dashboard</el-menu-item>
         <el-menu-item index="/settings"><i class="ti-clipboard mr10"></i>Settings</el-menu-item>
         <el-menu-item index="/messages"><i class="ti-info-alt mr10"></i>Message</el-menu-item>
@@ -55,6 +55,11 @@
   export default {
     data: {
       username: 'nick'
+    },
+    computed: {
+      path() {
+        return this.$route.path;
+      }
     }
   };
 </script>
@@ -149,6 +154,11 @@
     padding-top: 20px;
     overflow-y: scroll;
     background-color: #4f5061;
+
+    .text-success {
+      color: #5cb85c;
+    }
+
     .el-menu-navbar {
       border-radius: 0;
       .el-menu-item, .el-submenu__title {
@@ -168,6 +178,11 @@
       }
       .el-submenu .el-menu {
         background-color: #525365;
+        .el-menu-item {
+          height: 33px;
+          line-height: 33px;
+          font-size: 12px;
+        }
         .el-menu-item:hover {
           color: #fff;
           background-color: transparent;
