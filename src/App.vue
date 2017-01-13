@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="navbar-default">
+    <div class="main-navbar">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">
           <img src="./assets/logo.png">
@@ -17,7 +17,7 @@
         </el-submenu>
       </el-menu>
     </div>
-    <el-col :span="4" class="el-menu-navbar-wrap">
+    <el-col :span="4" class="main-sidebar">
       <el-menu default-active="2" class="el-menu el-menu-navbar" theme="dark" style="height: 100%">
         <el-menu-item index="/" router="true"><i class="ti-home mr10"></i>Dashboard</el-menu-item>
         <el-menu-item index="/settings" router="true"><i class="ti-clipboard mr10"></i>Settings</el-menu-item>
@@ -78,7 +78,7 @@
   .mr10 {
     margin-right: 10px;
   }
-  .navbar-default {
+  .main-navbar {
     position: fixed;
     left: 0;
     right: 0;
@@ -86,17 +86,11 @@
     padding: 0 8px;
     background: #1582dc;
     z-index: 1000;
-    .img-circle {
-      border-radius: 50%;
-    }
-    .header-avatar {
-      width: 32px;
-      height: 32px;
-      vertical-align: middle;
-    }
+
     .heading-font {
-      color: #fff;
       margin: 0 4px;
+      font-size: 14px;
+      color: #fff;
     }
     .navbar-brand {
       text-decoration: none;
@@ -105,10 +99,7 @@
       font-size: 18px;
       line-height: 20px;
       height: 30px;
-      .heading-font {
-        font-size: 14px;
-        color: rgba(219, 237, 252, 0.9);
-      }
+
       img{
         width: 28px;
         height: 28px;
@@ -120,6 +111,15 @@
       float: right;
       background-color: transparent;
       height: 50px;
+
+      .img-circle {
+        border-radius: 50%;
+      }
+      .header-avatar {
+        width: 32px;
+        height: 32px;
+        vertical-align: middle;
+      }
       .el-submenu {
         &:hover{
           background-color: #1270be;
@@ -142,17 +142,43 @@
       height: auto;
     }
   }
-  .el-menu-navbar-wrap {
+  .main-sidebar {
     height: 100%;
     position: fixed;
-    padding-top: 20px;
     margin-top: 50px;
-    background-color: #324057;
-    .el-menu-navbar{
+    padding-top: 20px;
+    overflow-y: scroll;
+    background-color: #4f5061;
+    .el-menu-navbar {
       border-radius: 0;
-      .el-menu-item,.el-submenu__title {
+      .el-menu-item, .el-submenu__title {
         height: 40px;
         line-height: 40px;
+      }
+    }
+
+    .el-menu--dark {
+      background-color: #4f5061;
+      .el-menu-item, .el-submenu__title {
+        color: #b2b6be;
+        &:hover {
+          color: #fff;
+          background-color: transparent;
+        }
+      }
+      .el-submenu .el-menu {
+        background-color: #525365;
+        .el-menu-item:hover {
+          color: #fff;
+          background-color: transparent;
+        }
+      }
+      .el-submenu .el-menu .el-menu-item.is-active, .el-menu-item.is-active {
+        color: #fff;
+        background-color: #1582dc;
+        &:hover {
+          background-color: #1582dc;
+        }
       }
     }
   }
