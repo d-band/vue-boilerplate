@@ -1,113 +1,157 @@
 <template>
   <div id="app">
-    <div class="header">
-      <div class="inner">
-        <router-link to="/" exact>Home</router-link>
-        <router-link to="/list">Top</router-link>
+    <div class="navbar-default">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          <img src="./assets/logo.png">
+          <span class="heading-font">D-BAND</span>
+        </a>
       </div>
+      <el-menu default-active="1" mode="horizontal">
+        <el-submenu>
+          <template slot="title">
+            <img src="./assets/avatar.png" class="header-avatar img-circle" :alt="username" :title="username">
+            <span class="heading-font">{{username}}</span>
+          </template>
+          <el-menu-item index="2-1">Logout</el-menu-item>
+        </el-submenu>
+      </el-menu>
     </div>
-    <transition name="fade" mode="out-in">
-      <router-view class="view"></router-view>
-    </transition>
+    <el-col :span="4" class="el-menu-navbar-wrap">
+      <el-menu default-active="2" class="el-menu el-menu-navbar" theme="dark" style="height: 100%">
+        <el-menu-item index="/" router="true"><i class="ti-home mr10"></i>Dashboard</el-menu-item>
+        <el-menu-item index="/settings" router="true"><i class="ti-clipboard mr10"></i>Settings</el-menu-item>
+        <el-menu-item index="/messages" router="true"><i class="ti-info-alt mr10"></i>Message</el-menu-item>
+        <el-menu-item index="/list" router="true"><i class="ti-user mr10"></i>Users</el-menu-item>
+        <el-submenu index="1">
+          <template slot="title"><i class="ti-bar-chart mr10"></i>UI Elements</template>
+          <el-menu-item-group>
+            <el-menu-item index="/buttons" router="true"><i class="ti-control-record text-success mr10"></i>Buttons</el-menu-item>
+            <el-menu-item index="/elements" router="true"><i class="ti-control-record text-success mr10"></i>Elements</el-menu-item>
+            <el-menu-item index="/typography" router="true"><i class="ti-control-record text-success mr10"></i>Typography</el-menu-item>
+            <el-menu-item index="/widgets" router="true"><i class="ti-control-record text-success mr10"></i>Widgets</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
+        <el-submenu index="2">
+          <template slot="title"><i class="ti-ruler-pencil mr10"></i>Components</template>
+          <el-menu-item-group>
+            <el-menu-item index="/calendar" router="true"><i class="ti-control-record text-success mr10"></i>Calendar</el-menu-item>
+            <el-menu-item index="/gallery" router="true"><i class="ti-control-record text-success mr10"></i>Gallery</el-menu-item>
+            <el-menu-item index="/charts" router="true"><i class="ti-control-record text-success mr10"></i>Charts</el-menu-item>
+            <el-menu-item index="/notifications" router="true"><i class="ti-control-record text-success mr10"></i>Notifications</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
+      </el-menu>
+    </el-col>
+    <el-col :span="20" :offset="4" style="margin-top: 50px;">
+      <transition name="fade" mode="out-in">
+        <router-view class="view"></router-view>
+      </transition>
+    </el-col>
   </div>
 </template>
 
+<script>
+  export default {
+    data: {
+      username: 'nick'
+    }
+  };
+</script>
+
 <style lang="less">
-#app, body, html {
-  height: 100%;
-}
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: 15px;
-  background-color: lighten(#eceef1, 30%);
-  margin: 0;
-  padding-top: 55px;
-  color: #34495e;
-  overflow-y: scroll;
-}
-a {
-  color: #34495e;
-  text-decoration: none;
-}
-.header {
-  background-color: #ff6600;
-  position: fixed;
-  z-index: 999;
-  height: 55px;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  .inner {
-    max-width: 800px;
-    box-sizing: border-box;
-    margin: 0px auto;
-    padding: 15px 5px;
-  }
-  a {
-    color: rgba(255, 255, 255, .8);
-    line-height: 24px;
-    transition: color .15s ease;
-    display: inline-block;
-    vertical-align: middle;
-    font-weight: 300;
-    letter-spacing: .075em;
-    margin-right: 1.8em;
-
-    &:hover {
-      color: #fff;
-    }
-    &.router-link-active {
-      color: #fff;
-      font-weight: 400;
-    }
-    &:nth-child(6) {
-      margin-right: 0;
-    }
-  }
-  .github {
-    color: #fff;
-    font-size: .9em;
-    margin: 0;
-    float: right;
-  }
-}
-.logo {
-  width: 24px;
-  margin-right: 10px;
-  display: inline-block;
-  vertical-align: middle;
-}
-.view {
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-}
-.fade-enter-active, .fade-leave-active {
-  transition: all .2s ease;
-}
-.fade-enter, .fade-leave-active {
-  opacity: 0;
-}
-@media (max-width 860px) {
-  .header .inner {
-    padding: 15px 30px;
-  }
-}
-@media (max-width 600px) {
   body {
-    font-size: 14px;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
   }
-  .header {
-    .inner {
-      padding: 15px;
+  html {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  #app, body, html {
+    height: 100%;
+  }
+  html, body {
+    margin:0;
+    padding:0;
+  }
+  .mr10 {
+    margin-right: 10px;
+  }
+  .navbar-default {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: #1582dc;
+    z-index: 1000;
+    .img-circle {
+      border-radius: 50%;
     }
-    a {
-      margin-right: 1em;
+    .header-avatar {
+      width: 32px;
     }
-    .github {
-      display: none;
+    .heading-font {
+      vertical-align: middle;
+    }
+    .navbar-brand {
+      text-decoration: none;
+      float: left;
+      padding: 10px 15px;
+      font-size: 18px;
+      line-height: 20px;
+      height: 30px;
+      .heading-font {
+        font-size: 14px;
+        color: rgba(219, 237, 252, 0.9);
+      }
+      img{
+        width: 28px;
+        height: 28px;
+        display: inline;
+        vertical-align: middle;
+      }
+    }
+    .el-menu {
+      float: right;
+      background-color: transparent;
+      height: 50px;
+      .el-submenu {
+        &:hover{
+          border-bottom: 0;
+          background-color: transparent;
+        }
+      }
+      .el-menu-item, .el-submenu__title {
+        height: 50px;
+        padding: 9px;
+        line-height: 32px;
+
+        &:hover{
+          border-bottom: 0;
+          background-color: transparent;
+        }
+      }
     }
   }
-}
+  .el-menu-navbar-wrap {
+    height: 100%;
+    position: fixed;
+    padding-top: 20px;
+    margin-top: 50px;
+    background-color: #324057;
+    .el-menu-navbar{
+      border-radius: 0;
+      .el-menu-item,.el-submenu__title {
+        height: 40px;
+        line-height: 40px;
+      }
+    }
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: all .2s ease;
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0;
+  }
 </style>
