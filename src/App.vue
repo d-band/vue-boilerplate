@@ -18,27 +18,27 @@
       </el-menu>
     </div>
     <el-col :span="4" class="main-sidebar">
-      <el-menu default-active="2" class="el-menu el-menu-navbar" theme="dark" style="height: 100%">
-        <el-menu-item index="/" router="true"><i class="ti-home mr10"></i>Dashboard</el-menu-item>
-        <el-menu-item index="/settings" router="true"><i class="ti-clipboard mr10"></i>Settings</el-menu-item>
-        <el-menu-item index="/messages" router="true"><i class="ti-info-alt mr10"></i>Message</el-menu-item>
-        <el-menu-item index="/list" router="true"><i class="ti-user mr10"></i>Users</el-menu-item>
+      <el-menu default-active="2" router class="el-menu el-menu-navbar" theme="dark" style="height: 100%">
+        <el-menu-item index="/"><i class="ti-home mr10"></i>Dashboard</el-menu-item>
+        <el-menu-item index="/settings"><i class="ti-clipboard mr10"></i>Settings</el-menu-item>
+        <el-menu-item index="/messages"><i class="ti-info-alt mr10"></i>Message</el-menu-item>
+        <el-menu-item index="/list"><i class="ti-user mr10"></i>Users</el-menu-item>
         <el-submenu index="1">
           <template slot="title"><i class="ti-bar-chart mr10"></i>UI Elements</template>
           <el-menu-item-group>
-            <el-menu-item index="/buttons" router="true"><i class="ti-control-record text-success mr10"></i>Buttons</el-menu-item>
-            <el-menu-item index="/elements" router="true"><i class="ti-control-record text-success mr10"></i>Elements</el-menu-item>
-            <el-menu-item index="/typography" router="true"><i class="ti-control-record text-success mr10"></i>Typography</el-menu-item>
-            <el-menu-item index="/widgets" router="true"><i class="ti-control-record text-success mr10"></i>Widgets</el-menu-item>
+            <el-menu-item index="/buttons"><i class="ti-control-record text-success mr10"></i>Buttons</el-menu-item>
+            <el-menu-item index="/elements"><i class="ti-control-record text-success mr10"></i>Elements</el-menu-item>
+            <el-menu-item index="/typography"><i class="ti-control-record text-success mr10"></i>Typography</el-menu-item>
+            <el-menu-item index="/widgets"><i class="ti-control-record text-success mr10"></i>Widgets</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="2">
           <template slot="title"><i class="ti-ruler-pencil mr10"></i>Components</template>
           <el-menu-item-group>
-            <el-menu-item index="/calendar" router="true"><i class="ti-control-record text-success mr10"></i>Calendar</el-menu-item>
-            <el-menu-item index="/gallery" router="true"><i class="ti-control-record text-success mr10"></i>Gallery</el-menu-item>
-            <el-menu-item index="/charts" router="true"><i class="ti-control-record text-success mr10"></i>Charts</el-menu-item>
-            <el-menu-item index="/notifications" router="true"><i class="ti-control-record text-success mr10"></i>Notifications</el-menu-item>
+            <el-menu-item index="/calendar"><i class="ti-control-record text-success mr10"></i>Calendar</el-menu-item>
+            <el-menu-item index="/gallery"><i class="ti-control-record text-success mr10"></i>Gallery</el-menu-item>
+            <el-menu-item index="/charts"><i class="ti-control-record text-success mr10"></i>Charts</el-menu-item>
+            <el-menu-item index="/notifications"><i class="ti-control-record text-success mr10"></i>Notifications</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>
