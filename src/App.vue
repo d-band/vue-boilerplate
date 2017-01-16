@@ -18,7 +18,7 @@
       </el-menu>
     </div>
     <el-col :span="4" class="main-sidebar">
-      <el-menu :default-active="path" router class="el-menu el-menu-navbar" theme="dark" style="height: 100%">
+      <el-menu :default-active="path" router class="el-menu menu-navbar" theme="dark" style="height: 100%">
         <el-menu-item index="/"><i class="ti-home mr10"></i>Dashboard</el-menu-item>
         <el-menu-item index="/settings"><i class="ti-clipboard mr10"></i>Settings</el-menu-item>
         <el-menu-item index="/messages"><i class="ti-info-alt mr10"></i>Message</el-menu-item>
@@ -134,10 +134,10 @@
         height: 50px;
         padding: 9px;
         line-height: 32px;
-        border-bottom: 0;
+        border-bottom: 0!important;
 
         &:hover{
-          border-bottom: 0;
+          border-bottom: 0!important;
           background-color: #1270be;
         }
       }
@@ -148,18 +148,25 @@
     }
   }
   .main-sidebar {
-    height: 100%;
     position: fixed;
-    margin-top: 50px;
-    padding-top: 20px;
-    overflow-y: scroll;
+    left: 0;
+    top: 50px;
+    bottom: 0;
+    padding: 20px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
     background-color: #4f5061;
+    -ms-overflow-style: none;  // IE 10+
+    overflow: -moz-scrollbars-none;  // Firefox
+    &&::-webkit-scrollbar {
+      display: none;  // Safari and Chrome
+    }
 
     .text-success {
       color: #5cb85c;
     }
 
-    .el-menu-navbar {
+    .menu-navbar {
       border-radius: 0;
       .el-menu-item, .el-submenu__title {
         height: 40px;
@@ -175,6 +182,14 @@
           color: #fff;
           background-color: transparent;
         }
+        a {
+          display: block;
+          color: inherit;
+          text-decoration: none;
+          &:hover {
+            color: inherit;
+          }
+        }
       }
       .el-submenu .el-menu {
         background-color: #525365;
@@ -182,10 +197,10 @@
           height: 33px;
           line-height: 33px;
           font-size: 12px;
-        }
-        .el-menu-item:hover {
-          color: #fff;
-          background-color: transparent;
+          &:hover {
+            color: #fff;
+            background-color: transparent;
+          }
         }
       }
       .el-submenu .el-menu .el-menu-item.is-active, .el-menu-item.is-active {
