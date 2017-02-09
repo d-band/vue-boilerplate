@@ -63,6 +63,7 @@
     "eslint-plugin-react": "^6.9.0",
     "eslint-plugin-vue": "^1.0.0",
     "json-server": "^0.9.4",
+    "mockjs": "^1.0.1-beta3",
     "pre-commit": "^1.2.2",
     "vue-loader": "^10.0.2",
     "vue-template-compiler": "^2.1.8"

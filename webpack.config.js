@@ -1,4 +1,5 @@
 const join = require('path').join;
+const mockjs = require('mockjs');
 const jsonServer = require('json-server');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -33,8 +34,15 @@ module.exports = (config, webpack) => {
       }]
     },
     setup(app) {
-      const db = join(__dirname, 'demo/db.json');
-      const router = jsonServer.router(db);
+      const data = mockjs.mock({
+        'users|100': [{
+          'id|+1': 1,
+          name: '@cname',
+          email: '@email',
+          address: '@city(true)'
+        }]
+      });
+      const router = jsonServer.router(data);
       const middlewares = jsonServer.defaults({
         static: join(__dirname, 'demo')
       });

@@ -7,17 +7,19 @@
       style="width: 100%">
       <el-table-column
         prop="id"
-        label="ID"
-        width="180">
+        label="ID">
       </el-table-column>
       <el-table-column
         prop="name"
-        label="姓名"
-        width="180">
+        label="姓名">
       </el-table-column>
       <el-table-column
         prop="email"
-        label="Email">
+        label="邮箱">
+      </el-table-column>
+      <el-table-column
+        prop="address"
+        label="地址">
       </el-table-column>
     </el-table>
     <div class="user-list-wrap">
