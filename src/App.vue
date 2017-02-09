@@ -20,9 +20,9 @@
     <el-col :span="4" class="main-sidebar">
       <el-menu :default-active="path" router class="el-menu menu-navbar" theme="dark" style="height: 100%">
         <el-menu-item index="/"><i class="ti-home mr10"></i>Dashboard</el-menu-item>
+        <el-menu-item index="/users"><i class="ti-user mr10"></i>Users</el-menu-item>
         <el-menu-item index="/settings"><i class="ti-clipboard mr10"></i>Settings</el-menu-item>
         <el-menu-item index="/messages"><i class="ti-info-alt mr10"></i>Message</el-menu-item>
-        <el-menu-item index="/list"><i class="ti-user mr10"></i>Users</el-menu-item>
         <el-submenu index="1">
           <template slot="title"><i class="ti-bar-chart mr10"></i>UI Elements</template>
           <el-menu-item-group>

@@ -9,7 +9,7 @@ export default new Router({
     path: '/',
     component: () => import('./pages/home.vue')
   }, {
-    path: '/list',
-    component: () => import('./pages/list.vue')
+    path: '/users',
+    component: () => import('./pages/users.vue')
   }]
 });

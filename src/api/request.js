@@ -5,7 +5,7 @@ const HOST = '';
 const request = {};
 
 function handle(req) {
-  return req.then(res => Promise.resolve(res.data)).catch((err) => {
+  return req.catch((err) => {
     const data = err.response && err.response.data;
     if (data && data.message) {
       return Promise.reject(data);
