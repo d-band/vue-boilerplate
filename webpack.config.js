@@ -40,6 +40,10 @@ module.exports = (config, webpack) => {
           name: '@cname',
           email: '@email',
           address: '@city(true)'
+        }],
+        'cities|20': [{
+          'id|+1': 1,
+          name: '@city(true)'
         }]
       });
       const router = jsonServer.router(data);
