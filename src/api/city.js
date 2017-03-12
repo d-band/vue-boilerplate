@@ -2,7 +2,7 @@ import request from './request';
 
 function list(query) {
   const params = { q: query };
-  return request.get('/api/users', params);
+  return request.get('/api/cities', params);
 }
 
 export default {

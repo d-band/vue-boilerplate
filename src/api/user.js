@@ -5,6 +5,11 @@ function list({ page, size, query }) {
   return request.get('/api/users', params);
 }
 
+function remove(id) {
+  return request.delete(`/api/users/${id}`);
+}
+
 export default {
-  list
+  list,
+  remove
 };

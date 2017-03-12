@@ -39,7 +39,7 @@ module.exports = (config, webpack) => {
           'id|+1': 1,
           name: '@cname',
           email: '@email',
-          address: '@city(true)'
+          'address|1-20': 20
         }],
         'cities|20': [{
           'id|+1': 1,

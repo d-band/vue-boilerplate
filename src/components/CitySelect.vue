@@ -11,9 +11,9 @@
     <el-option
       v-for="c in cities"
       :key="c.id"
-      :label="c.id"
+      :label="c.name"
       :value="c.id">
-      {{c.id}} ({{c.name}})
+      {{c.name}}
     </el-option>
   </el-select>
 </template>
