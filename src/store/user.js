@@ -26,6 +26,22 @@ export default {
     async remove({ dispatch }, id) {
       await API.remove(id);
       await dispatch('user/reload');
+    },
+    async create({ dispatch }, params) {
+      await API.create(params);
+      await dispatch('user/reload');
+    },
+    async update({ dispatch }, { id, data }) {
+      await API.update(id, data);
+      await dispatch('user/reload');
+    },
+    async upsert({ dispatch }, params) {
+      const { id } = params;
+      if (id) {
+        await dispatch('user/update', { id, data: params });
+      } else {
+        await dispatch('user/create', params);
+      }
     }
   },
   mutations: {

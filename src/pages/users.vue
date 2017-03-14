@@ -1,5 +1,8 @@
 <template>
   <div id="users">
+    <div class="user-btns">
+      <el-button type="primary" @click="handleAdd">添加</el-button>
+    </div>
     <el-table
       stripe
       :data="list"
@@ -49,21 +52,21 @@
         layout="prev, pager, next">
       </el-pagination>
     </div>
-    <el-dialog title="修改用户信息" v-model="show">
-      <el-form :model="form" style="width:100%;" label-width="80px">
-        <el-form-item label="姓名">
+    <el-dialog :title="title" v-model="show">
+      <el-form ref="form" :model="form" :rules="rules" style="width:100%;" label-width="80px">
+        <el-form-item label="姓名" prop="name">
           <el-input v-model="form.name" />
         </el-form-item>
-        <el-form-item label="邮箱">
+        <el-form-item label="邮箱" prop="email">
           <el-input v-model="form.email" />
         </el-form-item>
-        <el-form-item label="地址">
+        <el-form-item label="地址" prop="address">
           <city-select v-model="form.address" style="width:100%;" />
         </el-form-item>
       </el-form>
       <div slot="footer" style="text-align:center;">
         <el-button @click="show = false">取 消</el-button>
-        <el-button type="primary" @click="show = false">确 定</el-button>
+        <el-button type="primary" @click="handleSubmit">确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -81,11 +84,17 @@ export default {
   data() {
     return {
       show: false,
+      title: '',
       form: {
         id: null,
         name: null,
         email: null,
         address: null
+      },
+      rules: {
+        name: [{ required: true, message: '请输入姓名' }],
+        email: [{ type: 'email', required: true, message: '请输入邮箱' }],
+        address: [{ required: true, message: '请选择地址' }]
       },
       loading: false,
       page: 1,
@@ -124,13 +133,34 @@ export default {
     editUser(data) {
       this.form = { ...data };
       this.show = true;
+      this.title = '修改用户信息';
     },
     deleteUser(id) {
-      this.$store.dispatch('user/remove', id).catch((e) => {
-        this.$notify({
-          title: e.status,
-          message: e.message
-        });
+      this.$store.dispatch('user/remove', id).catch(e => this.$notify({
+        title: e.status,
+        message: e.message
+      }));
+    },
+    handleAdd() {
+      if (this.$refs.form) {
+        this.$refs.form.resetFields();
+      }
+      this.form.id = null;
+      this.show = true;
+      this.title = '添加用户';
+    },
+    handleSubmit() {
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          this.$store.dispatch('user/upsert', this.form).then(() => {
+            this.show = false;
+          }).catch(e => this.$notify({
+            title: e.status,
+            message: e.message
+          }));
+          return true;
+        }
+        return false;
       });
     }
   }
@@ -141,6 +171,10 @@ export default {
 #users {
   padding: 15px;
 
+  .user-btns {
+    margin-bottom: 20px;
+    text-align: right;
+  }
   .user-list-wrap {
     margin: 20px 0;
     text-align: center;
