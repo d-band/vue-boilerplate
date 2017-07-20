@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import CitySelect from '../components/CitySelect.vue';
 
 export default {
@@ -110,10 +110,16 @@ export default {
     cityMap: 'city/map'
   }),
   methods: {
+    ...mapActions({
+      fetchCities: 'city/getList',
+      fetchUsers: 'user/getList',
+      remove: 'user/remove',
+      upsert: 'user/upsert'
+    }),
     reload() {
       this.loading = true;
-      this.$store.dispatch('city/getList');
-      this.$store.dispatch('user/getList', {
+      this.fetchCities();
+      this.fetchUsers({
         page: this.page,
         size: this.size
       }).then(() => {
@@ -136,7 +142,7 @@ export default {
       this.title = '修改用户信息';
     },
     deleteUser(id) {
-      this.$store.dispatch('user/remove', id).catch(e => this.$notify({
+      this.remove(id).catch(e => this.$notify({
         title: e.status,
         message: e.message
       }));
@@ -152,7 +158,7 @@ export default {
     handleSubmit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          this.$store.dispatch('user/upsert', this.form).then(() => {
+          this.upsert(this.form).then(() => {
             this.show = false;
           }).catch(e => this.$notify({
             title: e.status,

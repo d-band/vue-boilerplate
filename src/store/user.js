@@ -1,7 +1,7 @@
 import API from '../api/user';
 
 export default {
-  namespace: 'user',
+  namespaced: true,
   state: {
     list: [],
     total: null,
@@ -14,33 +14,33 @@ export default {
   actions: {
     async getList({ commit }, params) {
       const { headers, data } = await API.list(params);
-      commit('user/getListDone', {
+      commit('getListDone', {
         list: data,
         total: parseInt(headers['x-total-count'], 10),
         params
       });
     },
     async reload({ dispatch, state }) {
-      dispatch('user/getList', state.params);
+      dispatch('getList', state.params);
     },
     async remove({ dispatch }, id) {
       await API.remove(id);
-      await dispatch('user/reload');
+      await dispatch('reload');
     },
     async create({ dispatch }, params) {
       await API.create(params);
-      await dispatch('user/reload');
+      await dispatch('reload');
     },
     async update({ dispatch }, { id, data }) {
       await API.update(id, data);
-      await dispatch('user/reload');
+      await dispatch('reload');
     },
     async upsert({ dispatch }, params) {
       const { id } = params;
       if (id) {
-        await dispatch('user/update', { id, data: params });
+        await dispatch('update', { id, data: params });
       } else {
-        await dispatch('user/create', params);
+        await dispatch('create', params);
       }
     }
   },

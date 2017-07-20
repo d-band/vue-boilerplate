@@ -3,7 +3,7 @@ import API from '../api/city';
 const reducer = (o, v) => ({ ...o, [v.id]: v });
 
 export default {
-  namespace: 'city',
+  namespaced: true,
   state: {
     list: []
   },
@@ -14,7 +14,7 @@ export default {
   actions: {
     async getList({ commit }) {
       const { data } = await API.list();
-      commit('city/getListDone', data);
+      commit('getListDone', data);
     }
   },
   mutations: {
