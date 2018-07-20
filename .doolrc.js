@@ -5,17 +5,13 @@ const jsonServer = require('json-server');
 module.exports = {
   publicPath: 'http://localhost:8000/',
   entry: {
-    app: './src/index.js',
-    vendor: [
-      'vue',
-      'vue-router',
-      'vuex',
-      'vuex-router-sync',
-      'element-ui'
-    ]
+    app: './src/index.js'
   },
   commons: {
-    name: 'vendor'
+    name: 'vendor',
+    chunks: 'initial',
+    test: /node_modules[\\/](.*)\.js$/i,
+    enforce: true
   },
   babelPlugins: ['transform-runtime'],
   devServer: {
@@ -25,7 +21,7 @@ module.exports = {
         to: '/demo/index.html'
       }]
     },
-    setup(app) {
+    before(app) {
       const data = mockjs.mock({
         'users|100': [{
           'id|+1': 1,

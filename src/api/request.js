@@ -8,12 +8,12 @@ function handle(req) {
   return req.catch((err) => {
     const data = err.response && err.response.data;
     if (data && data.message) {
-      return Promise.reject(data);
+      err.message = data.message;
+      return Promise.reject(err);
     }
-    return Promise.reject({
-      status: 500,
-      message: 'System error'
-    });
+    err.status = 500;
+    err.message = 'System error';
+    return Promise.reject(err);
   });
 }
 

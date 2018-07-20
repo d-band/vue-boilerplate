@@ -1,7 +1,11 @@
 {
   "root": true,
-  "parser": "babel-eslint",
-  "extends": ["vue", "airbnb"],
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  },
+  "extends": ["plugin:vue/essential", "airbnb"],
   "rules": {
     "semi": [2, "always"],
     "comma-dangle": [2, "never"],

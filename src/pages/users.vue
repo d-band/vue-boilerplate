@@ -1,7 +1,7 @@
 <template>
   <div id="users">
     <div class="user-btns">
-      <el-button type="primary" @click="handleAdd">添加</el-button>
+      <el-button type="primary" @click="handleAdd()">添加</el-button>
     </div>
     <el-table
       stripe
@@ -19,14 +19,14 @@
       <el-table-column
         prop="address"
         label="地址">
-        <template scope="scope">
+        <template slot-scope="scope">
           <span v-if="cityMap">{{cityMap[scope.row.address].name}}</span>
         </template>
       </el-table-column>
       <el-table-column
         label="操作"
         width="120">
-        <template scope="scope">
+        <template slot-scope="scope">
           <el-button
             @click="editUser(scope.row)"
             type="text"
@@ -52,7 +52,7 @@
         layout="prev, pager, next">
       </el-pagination>
     </div>
-    <el-dialog :title="title" v-model="show">
+    <el-dialog :title="title" :visible.sync="show">
       <el-form ref="form" :model="form" :rules="rules" style="width:100%;" label-width="80px">
         <el-form-item label="姓名" prop="name">
           <el-input v-model="form.name" />
@@ -66,7 +66,7 @@
       </el-form>
       <div slot="footer" style="text-align:center;">
         <el-button @click="show = false">取 消</el-button>
-        <el-button type="primary" @click="handleSubmit">确 定</el-button>
+        <el-button type="primary" @click="handleSubmit()">确 定</el-button>
       </div>
     </el-dialog>
   </div>

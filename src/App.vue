@@ -8,9 +8,14 @@
         </a>
       </div>
       <el-menu mode="horizontal">
-        <el-submenu>
+        <el-submenu index="2-0">
           <template slot="title">
-            <img src="./assets/avatar.png" class="header-avatar img-circle" :alt="username" :title="username">
+            <img
+              src="./assets/avatar.png"
+              class="header-avatar img-circle"
+              :alt="username"
+              :title="username"
+            >
             <span class="heading-font">{{username}}</span>
           </template>
           <el-menu-item index="2-1">Logout</el-menu-item>
@@ -18,32 +23,52 @@
       </el-menu>
     </div>
     <el-col :span="4" class="main-sidebar">
-      <el-menu :default-active="path" router class="el-menu menu-navbar" theme="dark" style="height: 100%">
+      <el-menu
+        router
+        background-color="#4f5061"
+        text-color="#b2b6be"
+        active-text-color="#fff"
+        style="height: 100%"
+        :default-active="path"
+        class="el-menu menu-navbar"
+      >
         <el-menu-item index="/"><i class="ti-home mr10"></i>Dashboard</el-menu-item>
         <el-menu-item index="/users"><i class="ti-user mr10"></i>Users</el-menu-item>
         <el-menu-item index="/settings"><i class="ti-clipboard mr10"></i>Settings</el-menu-item>
         <el-menu-item index="/messages"><i class="ti-info-alt mr10"></i>Message</el-menu-item>
         <el-submenu index="1">
           <template slot="title"><i class="ti-bar-chart mr10"></i>UI Elements</template>
-          <el-menu-item-group>
-            <el-menu-item index="/buttons"><i class="ti-control-record text-success mr10"></i>Buttons</el-menu-item>
-            <el-menu-item index="/elements"><i class="ti-control-record text-success mr10"></i>Elements</el-menu-item>
-            <el-menu-item index="/typography"><i class="ti-control-record text-success mr10"></i>Typography</el-menu-item>
-            <el-menu-item index="/widgets"><i class="ti-control-record text-success mr10"></i>Widgets</el-menu-item>
-          </el-menu-item-group>
+          <el-menu-item index="/buttons">
+            <i class="ti-control-record text-success mr10"></i>Buttons
+          </el-menu-item>
+          <el-menu-item index="/elements">
+            <i class="ti-control-record text-success mr10"></i>Elements
+          </el-menu-item>
+          <el-menu-item index="/typography">
+            <i class="ti-control-record text-success mr10"></i>Typography
+          </el-menu-item>
+          <el-menu-item index="/widgets">
+            <i class="ti-control-record text-success mr10"></i>Widgets
+          </el-menu-item>
         </el-submenu>
         <el-submenu index="2">
           <template slot="title"><i class="ti-ruler-pencil mr10"></i>Components</template>
-          <el-menu-item-group>
-            <el-menu-item index="/calendar"><i class="ti-control-record text-success mr10"></i>Calendar</el-menu-item>
-            <el-menu-item index="/gallery"><i class="ti-control-record text-success mr10"></i>Gallery</el-menu-item>
-            <el-menu-item index="/charts"><i class="ti-control-record text-success mr10"></i>Charts</el-menu-item>
-            <el-menu-item index="/notifications"><i class="ti-control-record text-success mr10"></i>Notifications</el-menu-item>
-          </el-menu-item-group>
+          <el-menu-item index="/calendar">
+            <i class="ti-control-record text-success mr10"></i>Calendar
+          </el-menu-item>
+          <el-menu-item index="/gallery">
+            <i class="ti-control-record text-success mr10"></i>Gallery
+          </el-menu-item>
+          <el-menu-item index="/charts">
+            <i class="ti-control-record text-success mr10"></i>Charts
+          </el-menu-item>
+          <el-menu-item index="/notifications">
+            <i class="ti-control-record text-success mr10"></i>Notifications
+          </el-menu-item>
         </el-submenu>
       </el-menu>
     </el-col>
-    <el-col :span="20" :offset="4" style="margin-top: 50px;">
+    <el-col :span="20" :offset="4" style="margin-top: 56px;">
       <transition name="fade" mode="out-in">
         <router-view class="view"></router-view>
       </transition>
@@ -52,21 +77,24 @@
 </template>
 
 <script>
-  export default {
-    data: {
+export default {
+  data() {
+    return {
       username: 'nick'
-    },
-    computed: {
-      path() {
-        return this.$route.path;
-      }
+    };
+  },
+  computed: {
+    path() {
+      return this.$route.path;
     }
-  };
+  }
+};
 </script>
 
 <style lang="less">
   body {
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,
+    PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
   }
   html {
     text-rendering: optimizeLegibility;
@@ -87,7 +115,7 @@
     position: fixed;
     left: 0;
     right: 0;
-    height: 50px;
+    height: 56px;
     padding: 0 8px;
     background: #1582dc;
     z-index: 1000;
@@ -100,10 +128,8 @@
     .navbar-brand {
       text-decoration: none;
       float: left;
-      padding: 10px 15px;
+      padding: 14px 15px;
       font-size: 18px;
-      line-height: 20px;
-      height: 30px;
 
       img{
         width: 28px;
@@ -115,7 +141,7 @@
     .el-menu {
       float: right;
       background-color: transparent;
-      height: 50px;
+      height: 56px;
 
       .img-circle {
         border-radius: 50%;
@@ -131,9 +157,8 @@
         }
       }
       .el-submenu__title {
-        height: 50px;
-        padding: 9px;
-        line-height: 32px;
+        height: 56px;
+        line-height: 56px;
         border-bottom: 0!important;
 
         &:hover{
@@ -142,15 +167,18 @@
         }
       }
     }
+    .el-menu--horizontal {
+      border-bottom: 0;
+    }
     .el-menu--horizontal .el-submenu > .el-menu {
-      top: 55px;
+      top: 56px;
       height: auto;
     }
   }
   .main-sidebar {
     position: fixed;
     left: 0;
-    top: 50px;
+    top: 56px;
     bottom: 0;
     padding: 20px 0;
     overflow-x: hidden;
@@ -167,48 +195,13 @@
     }
 
     .menu-navbar {
-      border-radius: 0;
+      border-right: none;
       .el-menu-item, .el-submenu__title {
         height: 40px;
         line-height: 40px;
       }
-    }
-
-    .el-menu--dark {
-      background-color: #4f5061;
-      .el-menu-item, .el-submenu__title {
-        color: #b2b6be;
-        &:hover {
-          color: #fff;
-          background-color: transparent;
-        }
-        a {
-          display: block;
-          color: inherit;
-          text-decoration: none;
-          &:hover {
-            color: inherit;
-          }
-        }
-      }
-      .el-submenu .el-menu {
-        background-color: #525365;
-        .el-menu-item {
-          height: 33px;
-          line-height: 33px;
-          font-size: 12px;
-          &:hover {
-            color: #fff;
-            background-color: transparent;
-          }
-        }
-      }
-      .el-submenu .el-menu .el-menu-item.is-active, .el-menu-item.is-active {
-        color: #fff;
-        background-color: #1582dc;
-        &:hover {
-          background-color: #1582dc;
-        }
+      .el-menu-item.is-active {
+        background-color: #1582dc !important;
       }
     }
   }

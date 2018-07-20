@@ -3,8 +3,7 @@
     filterable
     clearable
     remote
-    v-model="value"
-    @change="handleChange"
+    v-model="item"
     :remote-method="load"
     :loading="loading"
     placeholder="选择城市">
@@ -19,37 +18,44 @@
 </template>
 
 <script>
-  import API from '../api/city';
+import API from '../api/city';
 
-  export default {
-    name: 'city-select',
-    props: ['value'],
-    data() {
-      return {
-        loading: false,
-        cities: []
-      };
-    },
-    mounted() {
-      this.load();
-    },
-    methods: {
-      handleChange(id) {
-        this.$emit('input', id);
+export default {
+  name: 'city-select',
+  props: ['value'],
+  data() {
+    return {
+      loading: false,
+      cities: []
+    };
+  },
+  mounted() {
+    this.load();
+  },
+  computed: {
+    item: {
+      get() {
+        return this.value;
       },
-      load(name) {
-        this.loading = true;
-        API.list(name).then(({ data }) => {
-          this.cities = data;
-          this.loading = false;
-        }).catch((e) => {
-          this.loading = false;
-          this.$notify({
-            title: e.status,
-            message: e.message
-          });
-        });
+      set(v) {
+        this.$emit('input', v);
       }
     }
-  };
+  },
+  methods: {
+    load(name) {
+      this.loading = true;
+      API.list(name).then(({ data }) => {
+        this.cities = data;
+        this.loading = false;
+      }).catch((e) => {
+        this.loading = false;
+        this.$notify({
+          title: e.status,
+          message: e.message
+        });
+      });
+    }
+  }
+};
 </script>

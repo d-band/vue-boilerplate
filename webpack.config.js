@@ -1,3 +1,5 @@
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 module.exports = (config) => {
   // 添加 vue-loader
   config.module.rules.push({
@@ -10,5 +12,6 @@ module.exports = (config) => {
       }
     }
   });
+  config.plugins.push(new VueLoaderPlugin());
   return config;
 }
