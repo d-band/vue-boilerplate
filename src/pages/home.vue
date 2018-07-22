@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <div :class="$style.home">
     <img src="../assets/logo.png">
     <h1>{{ msg }}</h1>
     <el-button @click.native="startHacking">Let's do it</el-button>
@@ -27,8 +27,8 @@ export default {
 };
 </script>
 
-<style>
-#home {
+<style module>
+.home {
   padding: 15px;
 }
 </style>

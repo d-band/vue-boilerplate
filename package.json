@@ -42,7 +42,7 @@
   "devDependencies": {
     "babel-eslint": "^8.2.6",
     "babel-plugin-transform-runtime": "^6.15.0",
-    "dool": "^4.0.0",
+    "dool": "^4.0.1",
     "element-theme": "^2.0.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
