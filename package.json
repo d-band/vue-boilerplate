@@ -5,7 +5,6 @@
   "main": "src/index.js",
   "scripts": {
     "build": "rm -rf dist && dool build",
-    "build:theme": "et -c var.scss",
     "lint": "eslint --fix --ext .js,.vue src/",
     "dev": "dool server"
   },
@@ -31,7 +30,6 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cd-themify-icons": "^0.0.1",
-    "element-theme-chalk": "^2.4.4",
     "element-ui": "^2.4.4",
     "qs": "^6.5.2",
     "vue": "^2.5.16",
@@ -42,8 +40,7 @@
   "devDependencies": {
     "babel-eslint": "^8.2.6",
     "babel-plugin-transform-runtime": "^6.15.0",
-    "dool": "^4.0.1",
-    "element-theme": "^2.0.1",
+    "dool": "^4.0.2",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
@@ -52,7 +49,9 @@
     "eslint-plugin-vue": "^4.7.0",
     "json-server": "^0.14.0",
     "mockjs": "^1.0.1-beta3",
+    "node-sass": "^4.9.2",
     "pre-commit": "^1.2.2",
+    "sass-loader": "^7.0.3",
     "vue-loader": "^15.2.6",
     "vue-template-compiler": "^2.5.16"
   }
