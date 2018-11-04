@@ -13,7 +13,7 @@ module.exports = {
     test: /node_modules[\\/](.*)\.js$/i,
     enforce: true
   },
-  babelPlugins: ['transform-runtime'],
+  babelPlugins: ['@babel/transform-runtime'],
   devServer: {
     historyApiFallback: {
       rewrites: [{
